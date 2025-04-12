@@ -1,3 +1,4 @@
+
 # Use official Node.js image
 FROM node:18
 
@@ -10,7 +11,7 @@ RUN npm install
 COPY . .
 
 # Expose port
-EXPOSE 3000
+EXPOSE 8080
 
 # Start server
 CMD ["npm", "start"]
