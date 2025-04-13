@@ -1,0 +1,5 @@
+steps:
+  - name: 'gcr.io/buildpacks/builder'
+    args: ['pack', 'build', '', '--builder=gcr.io/buildpacks/builder:v1']
+images:
+  - $_IMAGE
