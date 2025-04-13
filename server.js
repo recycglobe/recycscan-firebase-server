@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const admin = require('firebase-admin');
 const cors = require('cors');
 const app = express();
-const port = process.env.PORT || 8080;
+const port = process.env.PORT;
 
 const serviceAccount = require('./serviceAccountKey.json');
 
