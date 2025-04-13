@@ -4,25 +4,24 @@ const admin = require('firebase-admin');
 const cors = require('cors');
 const app = express();
 
-// ΜΟΝΟ αυτό επιτρέπεται στο Cloud Run:
-const port = process.env.PORT;
+// ✅ Cloud Run απαιτεί να ακούει στο process.env.PORT
+const port = process.env.PORT || 8080;
 
-if (!port) {
-  console.error('❌ Cloud Run δεν έδωσε μεταβλητή PORT');
-  process.exit(1);
-}
-
+// ✅ Path προς το service account key JSON
 const serviceAccount = require('./serviceAccountKey.json');
 
+// ✅ Firebase αρχικοποίηση
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
 });
 
 const db = admin.firestore();
 
+// ✅ Middleware
 app.use(cors());
 app.use(bodyParser.json());
 
+// ✅ Endpoint για ανέβασμα προϊόντων
 app.post('/upload', async (req, res) => {
   try {
     const products = req.body;
@@ -41,6 +40,7 @@ app.post('/upload', async (req, res) => {
   }
 });
 
+// ✅ Start server
 app.listen(port, () => {
-  console.log(`✅ RecycScan API running on port ${port}`);
+  console.log(`🚀 RecycScan Firestore API running on port ${port}`);
 });
