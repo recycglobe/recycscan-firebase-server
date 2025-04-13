@@ -3,7 +3,14 @@ const bodyParser = require('body-parser');
 const admin = require('firebase-admin');
 const cors = require('cors');
 const app = express();
+
+// ΜΟΝΟ αυτό επιτρέπεται στο Cloud Run:
 const port = process.env.PORT;
+
+if (!port) {
+  console.error('❌ Cloud Run δεν έδωσε μεταβλητή PORT');
+  process.exit(1);
+}
 
 const serviceAccount = require('./serviceAccountKey.json');
 
@@ -35,5 +42,5 @@ app.post('/upload', async (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`RecycScan Firestore API running on port ${port}`);
+  console.log(`✅ RecycScan API running on port ${port}`);
 });
