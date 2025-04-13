@@ -1,0 +1,20 @@
+# RecycScan Firebase Server
+
+Node.js backend για σύνδεση Firebase Cloud Functions με 
+την πλατφόρμα Recycglobe.
+
+## Περιεχόμενα
+- Express server
+- Firebase Admin SDK
+- REST API endpoints
+- Docker container
+
+## Περιβάλλον Ανάπτυξης
+- Node.js
+- Firebase
+- Docker
+
+## Deployment
+[ ] Προσθήκη οδηγιών για Google Cloud Run
+
+
